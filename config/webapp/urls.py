@@ -11,4 +11,10 @@ urlpatterns = [
     path('car_create/', car_create, name='car_create'),
     path('car_update/<int:id>', car_update, name='car_update'),
     path('car_delete/<int:id>', car_delete, name='car_delete'),
+    path('brands_list/', brands_list, name='brands_list'),
+    path('brands_list/page=<int:page>', brands_list, name='brands_list'),
+    path('brand_details/<str:name>', brand_details, name='brand_details'),
+    path('brand_create/', brand_create, name='brand_create'),
+    path('brand_update/<str:name>', brand_update, name='brand_update'),
+    path('brand_delete/<str:name>', brand_delete, name='brand_delete'),
 ]

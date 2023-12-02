@@ -21,6 +21,8 @@ def cars_list(request, page=1):
 def car_details(request, id):
     url = 'http://' + request.get_host() + '/api/car/' + str(id)
     response = requests.get(url)
+    if response.status_code == 404:
+        return HttpResponse("ERROR 404 - Car not found")
     print(response.json())
     context = {
         'car': response.json()
@@ -54,6 +56,8 @@ def car_update(request, id):
     else:
         url = 'http://' + request.get_host() + '/api/car/' + str(id)
         response = requests.get(url)
+        if response.status_code == 404:
+            return HttpResponse("ERROR 404 - Car not found")
         url = 'http://' + request.get_host() + '/api/brand/'
         response_brands = requests.get(url)
         context = {
@@ -70,3 +74,60 @@ def car_delete(request, id):
     else:
         return HttpResponse('Error deleting car ' + response.text, status=400)
     
+def brands_list(request, page=1):
+    url = 'http://' + request.get_host() + '/api/brand/' + '?page=' + str(page)
+    response = requests.get(url)
+    context = {
+        'brands': response.json()['results'],
+        'previous': request.build_absolute_uri(reverse('webapp:brands_list', kwargs={'page': page - 1})) if response.json()['previous']  else None,
+        'next': request.build_absolute_uri(reverse('webapp:brands_list', kwargs={'page': page + 1})) if response.json()['next'] else None,
+        'page': page
+    }
+    return render(request, 'webapp/brands_list.html', context=context)
+
+def brand_details(request, name):
+    url = 'http://' + request.get_host() + '/api/brand/' + str(name)
+    response = requests.get(url)
+    if response.status_code == 404:
+        return HttpResponse("ERROR 404 - Brand not found")
+    context = {
+        'brand': response.json()
+    }
+    return render(request, 'webapp/brand_details.html', context=context)
+
+def brand_create(request):
+    if request.method == 'POST':
+        url = 'http://' + request.get_host() + '/api/brand/'
+        response = requests.post(url, data=request.POST)
+        if response.status_code == 201:
+            return HttpResponse('Brand created successfully')
+        else:
+            return HttpResponse('Error creating brand ' + response.text, status=400)
+    else:
+        return render(request, 'webapp/brand_create.html')
+    
+def brand_update(request, name):
+    if request.method == 'POST':
+        url = 'http://' + request.get_host() + '/api/brand/' + str(name) + '/'
+        response = requests.put(url, data=request.POST)
+        if response.status_code == 200:
+            return HttpResponse('Brand updated successfully')
+        else:
+            return HttpResponse('Error updating brand ' + response.text, status=400)
+    else:
+        url = 'http://' + request.get_host() + '/api/brand/' + str(name)
+        response = requests.get(url)
+        if response.status_code == 404:
+            return HttpResponse("ERROR 404 - Brand not found")
+        context = {
+            'brand': response.json()
+        }
+        return render(request, 'webapp/brand_update.html', context=context)
+    
+def brand_delete(request, name):
+    url = 'http://' + request.get_host() + '/api/brand/' + str(name) + '/'
+    response = requests.delete(url)
+    if response.status_code == 204:
+        return HttpResponse('Brand deleted successfully')
+    else:
+        return HttpResponse('Error deleting brand ' + response.text, status=400)

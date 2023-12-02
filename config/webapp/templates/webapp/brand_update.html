@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<style>
+    table {
+        color: #333;
+        background: white;
+        border: 1px solid grey;
+        font-size: 12pt;
+        border-collapse: collapse;
+      }
+      table thead th,
+      table tfoot th {
+        color: #777;
+        background: rgba(0,0,0,.1);
+      }
+      table caption {
+        padding:.5em;
+      }
+      table th,
+      table td {
+        padding: .5em;
+        border: 1px solid lightgrey;
+      }
+</style>
+<html lang="en">
+    <body>
+        <form method="post">
+            {% csrf_token %}
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="name" name="name" value="{{ brand.name }}"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" id="description" name="description" value="{{ brand.description }}"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Update">
+        </form>
+    </body>
+</html>

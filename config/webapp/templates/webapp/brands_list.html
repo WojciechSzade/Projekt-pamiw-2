@@ -25,24 +25,17 @@
     <body>
         <table>
             <tr>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Color</th>
-                <th>Price</th>
+                <th>Name</th>
+                <th>Description</th>
                 <th>Actions</th>
-            </tr>
-        {% for car in cars %}
+        {% for brand in brands %}
             <tr>
-                <td>{{ car.brand_name }}</td>
-                <td>{{ car.model }}</td>
-                <td>{{ car.year }}</td>
-                <td>{{ car.color }}</td>
-                <td>{{ car.price }}</td>
+                <td>{{ brand.name }}</td>
+                <td>{{ brand.description }}</td>
                 <td>
-                    <a href="/car_details/{{ car.id }}">View</a>
-                    <a href="/car_update/{{ car.id }}">Update</a>
-                    <a href="/car_delete/{{ car.id }}">Delete</a>
+                    <a href="/brand_details/{{ brand.name }}">View</a>
+                    <a href="/brand_update/{{ brand.name }}">Update</a>
+                    <a href="/brand_delete/{{ brand.name }}">Delete</a>
                 </td>
             </tr>
         {% endfor %}
