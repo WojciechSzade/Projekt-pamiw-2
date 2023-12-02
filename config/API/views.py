@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from .models import Car, Brand
+from .serializers import CarSerializer, BrandSerializer
 from rest_framework import viewsets
-from .models import Car
-from .serializers import CarSerializer
 
-class CarsViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows cars to be viewed or edited.
-    """
-    queryset = Car.objects.all().order_by('brand')
+
+class CarViewSet(viewsets.ModelViewSet):
+    queryset = Car.objects.all()
     serializer_class = CarSerializer
+    
+
+class BrandViewSet(viewsets.ModelViewSet):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
