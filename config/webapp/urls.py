@@ -4,7 +4,7 @@ from .views import *
 app_name = "webapp"
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', cars_list, name='cars_list'),
     path('cars_list/', cars_list, name='cars_list'),
     path('cars_list/page=<int:page>', cars_list, name='cars_list'),
     path('car_details/<int:id>', car_details, name='car_details'),
