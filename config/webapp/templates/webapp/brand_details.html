@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #3498db;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            padding: 8px;
-            margin-right: 10px;
-            border-radius: 4px;
-        }
-
-        nav a:hover {
-            background-color: #2980b9;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        td:first-child {
-            font-weight: bold;
-            color: #333;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        button {
-            padding: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #3498db;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      
+      nav a {
+        text-decoration: none;
+        color: #fff;
+        padding: 8px;
+        margin-right: 10px;
+        border-radius: 4px;
+      }
+      
+      nav a:hover {
+        background-color: #2980b9;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      
+      td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      td:first-child {
+        font-weight: bold;
+        color: #333;
+      }
+      
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+      
+      button {
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+      }
     </style>
-</head>
-<body>
+    <title>Brand's details</title>
+  </head>
+  <body>
     <nav>
-        
-        <a href="/cars_list/">Cars List</a>
-        <a href="/car_create/">Create Car</a>
-        <a href="/brands_list/">Brands List</a>
-        <a href="/brand_create/">Create Brand</a>
+      <a href="/cars_list/">Cars List</a>
+      <a href="/car_create/">Create Car</a>
+      <a href="/brands_list/">Brands List</a>
+      <a href="/brand_create/">Create Brand</a>
     </nav>
 
     <table>
-        <tr>
-            <td>Name</td>
-            <td>{{ brand.name }}</td>
-        </tr>
-        <tr>
-            <td>Description</td>
-            <td>{{ brand.description }}</td>
-        </tr>
+      <tr>
+        <td>Name</td>
+        <td>{{ brand.name }}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{ brand.description }}</td>
+      </tr>
     </table>
 
     <button onclick="location.href='/brand_update/{{ brand.name }}'">Update</button>
     <button onclick="location.href='/brand_delete/{{ brand.name }}'">Delete</button>
-</body>
+  </body>
 </html>

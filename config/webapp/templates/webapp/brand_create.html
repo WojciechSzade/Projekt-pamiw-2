@@ -1,93 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #3498db;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            padding: 8px;
-            margin-right: 10px;
-            border-radius: 4px;
-        }
-
-        nav a:hover {
-            background-color: #2980b9;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        td:first-child {
-            font-weight: bold;
-            color: #333;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            margin-top: 5px;
-        }
-
-        input[type="submit"] {
-            padding: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #3498db;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      
+      nav a {
+        text-decoration: none;
+        color: #fff;
+        padding: 8px;
+        margin-right: 10px;
+        border-radius: 4px;
+      }
+      
+      nav a:hover {
+        background-color: #2980b9;
+      }
+      
+      form {
+        margin-top: 20px;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      td:first-child {
+        font-weight: bold;
+        color: #333;
+      }
+      
+      input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        margin-top: 5px;
+      }
+      
+      input[type='submit'] {
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+      }
     </style>
-</head>
-<body>
+    <title>Create a brand</title>
+  </head>
+  <body>
     <nav>
-        
-        <a href="/cars_list/">Cars List</a>
-        <a href="/car_create/">Create Car</a>
-        <a href="/brands_list/">Brands List</a>
-        <a href="/brand_create/">Create Brand</a>
+      <a href="/cars_list/">Cars List</a>
+      <a href="/car_create/">Create Car</a>
+      <a href="/brands_list/">Brands List</a>
+      <a href="/brand_create/">Create Brand</a>
     </nav>
 
     <form method="post">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Name</td>
-                <td><input type="text" id="name" name="name"></td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td><input type="text" id="description" name="description"></td>
-            </tr>
-        </table>
-        <input type="submit" value="Add">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" id="name" name="name" />
+          </td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            <input type="text" id="description" name="description" />
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="Add" />
     </form>
-</body>
+  </body>
 </html>
