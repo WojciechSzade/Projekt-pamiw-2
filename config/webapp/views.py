@@ -34,9 +34,9 @@ def car_create(request):
         url = 'http://' + request.get_host() + '/api/car/'
         response = requests.post(url, data=request.POST)
         if response.status_code == 201:
-            return HttpResponse('Car created successfully')
+            return HttpResponse('Car created successfully<br/><button type="button" onclick="location.href=\'/\'">Previous</button>')
         else:
-            return HttpResponse('Error creating car ' + response.text, status=400)
+            return HttpResponse('Error creating car ' + response.text + '<br/><button type="button" onclick="location.href=\'/\'">Previous</button>', status=400)
     else:
         url = 'http://' + request.get_host() + '/api/brand/'
         response = requests.get(url)
@@ -50,7 +50,7 @@ def car_update(request, id):
         url = 'http://' + request.get_host() + '/api/car/' + str(id) + '/'
         response = requests.put(url, data=request.POST)
         if response.status_code == 200:
-            return HttpResponse('Car updated successfully')
+            return HttpResponse('Car updated successfully<br/><button type="button" onclick="location.href=\'/\'">Previous</button>')
         else:
             return HttpResponse('Error updating car ' + response.text, status=400)
     else:
@@ -70,7 +70,7 @@ def car_delete(request, id):
     url = 'http://' + request.get_host() + '/api/car/' + str(id) + '/'
     response = requests.delete(url)
     if response.status_code == 204:
-        return HttpResponse('Car deleted successfully')
+        return HttpResponse('Car deleted successfully<br/><button type="button" onclick="location.href=\'/\'">Previous</button>')
     else:
         return HttpResponse('Error deleting car ' + response.text, status=400)
     
@@ -100,7 +100,7 @@ def brand_create(request):
         url = 'http://' + request.get_host() + '/api/brand/'
         response = requests.post(url, data=request.POST)
         if response.status_code == 201:
-            return HttpResponse('Brand created successfully')
+            return HttpResponse('Brand created successfully<br/><button type="button" onclick="location.href=\'/\'">Previous</button>')
         else:
             return HttpResponse('Error creating brand ' + response.text, status=400)
     else:
